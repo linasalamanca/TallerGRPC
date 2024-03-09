@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package calculo;
+
+service Calculadora {
+  rpc Suma(SumaRequest) returns (OperacionResponse) {}
+
+  rpc Resta(RestaRequest) returns (OperacionResponse) {}
+}
+
+// Solicitud suma
+message SumaRequest {
+  float num1 = 1;
+  float num2 = 2;
+}
+
+// Solicitud resta
+message RestaRequest {
+  float num1 = 1;
+  float num2 = 2;
+}
+
+// Respuesta
+message OperacionResponse {
+  float resultado = 1;
+}
