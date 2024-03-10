@@ -2,6 +2,7 @@ from concurrent import futures
 import grpc
 import calculo_servicio_pb2
 import calculo_servicio_pb2_grpc
+import re
 
 # Definir los clientes gRPC para los servidores de operaciones
 
@@ -72,6 +73,36 @@ class CalculadoraService(calculo_servicio_pb2_grpc.CalculadoraServicer):
             resultado = self.realizar_resta_local(request.num1, request.num2)
         else:
             resultado = response.resultado
+        return calculo_servicio_pb2.OperacionResponse(resultado=resultado)
+
+    def Operacion(self, request, context):
+        operacion = request.operacion
+        elementos = re.findall(r'(\d+\.?\d*)|([+-])', operacion)
+
+        resultado = float(elementos[0][0])  # Inicializa con el primer número
+
+        i = 1
+        while i < len(elementos):
+            operador = elementos[i][1]
+            siguiente_numero = float(elementos[i + 1][0])
+
+            if operador == '+':
+                response = self.suma_client.suma(resultado, siguiente_numero)
+                if response:
+                    resultado = response.resultado
+                else:
+                    resultado = self.realizar_suma_local(
+                        resultado, siguiente_numero)
+            elif operador == '-':
+                response = self.resta_client.resta(resultado, siguiente_numero)
+                if response:
+                    resultado = response.resultado
+                else:
+                    resultado = self.realizar_resta_local(
+                        resultado, siguiente_numero)
+
+            i += 2
+
         return calculo_servicio_pb2.OperacionResponse(resultado=resultado)
 
 

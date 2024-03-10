@@ -2,6 +2,7 @@
 import grpc
 import calculo_servicio_pb2
 import calculo_servicio_pb2_grpc
+import re
 
 
 class CalculatorClient:
@@ -15,14 +16,21 @@ class CalculatorClient:
     def resta(self, num1, num2):
         return self.stub.Resta(calculo_servicio_pb2.RestaRequest(num1=num1, num2=num2)).resultado
 
+    def enviar_operacion(self, operacion):
+        return self.stub.Operacion(calculo_servicio_pb2.OperacionRequest(operacion=operacion)).resultado
+
 
 # Ejemplo de uso del cliente
 if __name__ == '__main__':
     client = CalculatorClient()
 
-    print(f"Ingrese los números que desea operar: ")
-    num1 = float(input("Ingrese el primer número: "))
-    num2 = float(input("Ingrese el segundo número: "))
+    operacion = input("Ingrese la operación que desea realizar: ")
 
-    print(f"Resultado de la suma: {client.suma(num1, num2)}")
-    print(f"Resultado de la resta: {client.resta(num1, num2)}")
+    resultado = re.findall(r'[^+-]+|[+-]', operacion)
+
+    print(resultado)
+
+    print(f"Resultado de la operación: {client.enviar_operacion(operacion)}")
+
+    # print(f"Resultado de la suma: {client.suma(num1, num2)}")
+    # print(f"Resultado de la resta: {client.resta(num1, num2)}")

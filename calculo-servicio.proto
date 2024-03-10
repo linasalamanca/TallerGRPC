@@ -6,6 +6,8 @@ service Calculadora {
   rpc Suma(SumaRequest) returns (OperacionResponse) {}
 
   rpc Resta(RestaRequest) returns (OperacionResponse) {}
+
+  rpc Operacion(OperacionRequest) returns (OperacionResponse) {}
 }
 
 // Solicitud suma
@@ -18,6 +20,11 @@ message SumaRequest {
 message RestaRequest {
   float num1 = 1;
   float num2 = 2;
+}
+
+// Solicitud Operacion
+message OperacionRequest {
+  string operacion = 1; // Aquí se corrigió añadiendo 'string' como tipo de dato para 'operacion'
 }
 
 // Respuesta
