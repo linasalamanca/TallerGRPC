@@ -28,7 +28,7 @@ if __name__ == '__main__':
 
     resultado = re.findall(r'[^+-]+|[+-]', operacion)
 
-    print(resultado)
+    # print(resultado)
 
     print(f"Resultado de la operación: {client.enviar_operacion(operacion)}")
 
