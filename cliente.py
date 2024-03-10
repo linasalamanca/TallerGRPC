@@ -20,14 +20,9 @@ class CalculatorClient:
 if __name__ == '__main__':
     client = CalculatorClient()
 
-    # Solicitar la operación y los números desde la terminal
-    operacion = input("Ingrese la operación (suma/resta): ").strip().lower()
+    print(f"Ingrese los números que desea operar: ")
     num1 = float(input("Ingrese el primer número: "))
     num2 = float(input("Ingrese el segundo número: "))
 
-    if operacion == 'suma':
-        print(f"Resultado de la suma: {client.suma(num1, num2)}")
-    elif operacion == 'resta':
-        print(f"Resultado de la resta: {client.resta(num1, num2)}")
-    else:
-        print("Operación no reconocida.")
+    print(f"Resultado de la suma: {client.suma(num1, num2)}")
+    print(f"Resultado de la resta: {client.resta(num1, num2)}")
