@@ -1,6 +1,8 @@
+
 import grpc
 import calculo_servicio_pb2
 import calculo_servicio_pb2_grpc
+
 
 class CalculatorClient:
     def __init__(self, host='localhost', port=50051):
@@ -12,6 +14,7 @@ class CalculatorClient:
 
     def resta(self, num1, num2):
         return self.stub.Resta(calculo_servicio_pb2.RestaRequest(num1=num1, num2=num2)).resultado
+
 
 # Ejemplo de uso del cliente
 if __name__ == '__main__':

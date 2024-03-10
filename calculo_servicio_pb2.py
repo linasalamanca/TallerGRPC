@@ -11,22 +11,20 @@ from google.protobuf.internal import builder as _builder
 
 _sym_db = _symbol_database.Default()
 
-
-
-
 DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x16\x63\x61lculo-servicio.proto\x12\x07\x63\x61lculo\")\n\x0bSumaRequest\x12\x0c\n\x04num1\x18\x01 \x01(\x02\x12\x0c\n\x04num2\x18\x02 \x01(\x02\"*\n\x0cRestaRequest\x12\x0c\n\x04num1\x18\x01 \x01(\x02\x12\x0c\n\x04num2\x18\x02 \x01(\x02\"&\n\x11OperacionResponse\x12\x11\n\tresultado\x18\x01 \x01(\x02\x32\x87\x01\n\x0b\x43\x61lculadora\x12:\n\x04Suma\x12\x14.calculo.SumaRequest\x1a\x1a.calculo.OperacionResponse\"\x00\x12<\n\x05Resta\x12\x15.calculo.RestaRequest\x1a\x1a.calculo.OperacionResponse\"\x00\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
-_builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'calculo_servicio_pb2', _globals)
+_builder.BuildTopDescriptorsAndMessages(
+    DESCRIPTOR, 'calculo_servicio_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
-  DESCRIPTOR._options = None
-  _globals['_SUMAREQUEST']._serialized_start=35
-  _globals['_SUMAREQUEST']._serialized_end=76
-  _globals['_RESTAREQUEST']._serialized_start=78
-  _globals['_RESTAREQUEST']._serialized_end=120
-  _globals['_OPERACIONRESPONSE']._serialized_start=122
-  _globals['_OPERACIONRESPONSE']._serialized_end=160
-  _globals['_CALCULADORA']._serialized_start=163
-  _globals['_CALCULADORA']._serialized_end=298
+    DESCRIPTOR._options = None
+    _globals['_SUMAREQUEST']._serialized_start = 35
+    _globals['_SUMAREQUEST']._serialized_end = 76
+    _globals['_RESTAREQUEST']._serialized_start = 78
+    _globals['_RESTAREQUEST']._serialized_end = 120
+    _globals['_OPERACIONRESPONSE']._serialized_start = 122
+    _globals['_OPERACIONRESPONSE']._serialized_end = 160
+    _globals['_CALCULADORA']._serialized_start = 163
+    _globals['_CALCULADORA']._serialized_end = 298
 # @@protoc_insertion_point(module_scope)
